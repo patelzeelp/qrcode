@@ -71,7 +71,8 @@ require_once '../../database/dbcon.php';
               </div>
             </div>
           </div>
-          <?php $sql = mysqli_query($con, "SELECT  *  FROM a where floor='first'");
+          <?php $sql = mysqli_query($con, "SELECT * FROM a WHERE floor='first' ORDER BY floor_number ASC");
+
           if (mysqli_num_rows($sql) > 0) :
 
             foreach ($sql as $row) :  ?>

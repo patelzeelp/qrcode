@@ -38,7 +38,7 @@ require_once '../../admin/database/dbcon.php';
                             </ol>
                         </nav>
                     </div>
-                    <?php $sql = mysqli_query($con, "SELECT  *  FROM a where floor='first'");
+                    <?php $sql = mysqli_query($con, "SELECT  *  FROM a where floor='first' ORDER BY floor_number ASC");
                     if (mysqli_num_rows($sql) > 0) :
                         foreach ($sql as $row) :  ?>
                             <div class="row">

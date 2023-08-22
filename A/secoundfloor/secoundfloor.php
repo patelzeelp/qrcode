@@ -39,7 +39,7 @@
                         </nav>
                     </div>
                       <?php 
-                        $sql = mysqli_query($con,"SELECT  *  FROM a where floor='second'");
+                        $sql = mysqli_query($con,"SELECT  *  FROM a where floor='second' ORDER BY floor_number ASC");
                         if(mysqli_num_rows($sql) >0):
                       foreach($sql as $row) :  ?>
                      <div class="row">   

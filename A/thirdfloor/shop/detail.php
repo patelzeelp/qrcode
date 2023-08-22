@@ -29,7 +29,7 @@ if (isset($_GET['id'])) {
       <div class="content-wrapper">
 
         <div class="page-header">
-          <img src="../../../img/<?php echo $row['shoplogo'];?>" alt="img" style="width: 50px; height: 50px; border: 2px solid gray; border-radius: 20px;">
+          <img src="../../../img/<?php echo $row['shoplogo'];?>" alt="img" style="width: 50px; height: 40px; border: 2px solid gray; border-radius: 20px;">
           <h1 class="page-title text-primary"> <?php echo $row['name']; ?></h1>
 
           <a href="tel: +9112345677890" class="d-inline-block mb-2 text-decoration-none text-dark ">
