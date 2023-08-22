@@ -1,2 +1,2 @@
 <?php
-$con = mysqli_connect("localhost", "root", "", "qrcode");
+$con = mysqli_connect("localhost", "root", "", "qrcode");   

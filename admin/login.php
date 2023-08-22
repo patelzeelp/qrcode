@@ -4,16 +4,16 @@ session_start(); // Start the session
 include 'database/dbcon.php';
 
 if (isset($_POST['submit'])) {
-    $floor_number = mysqli_real_escape_string($con, $_POST['floor_number']);
+    $complex_name = mysqli_real_escape_string($con, $_POST['complex_name']);
     $password = md5($_POST['password']);
 
-    $sql = "SELECT * FROM user_login WHERE floor_number = '$floor_number' AND password = '$password'";
+    $sql = "SELECT * FROM user_login WHERE complex_name = '$complex_name' AND password = '$password'";
     $result = $con->query($sql);
 
     if ($result->num_rows == 1) {
         $user_data = $result->fetch_assoc();
         $_SESSION['username'] = $user_data['username']; // Store username in session
-        header("Location: home.php");
+        header("Location: A/index.php");
         exit();
     } else {
         echo "Invalid login credentials.";
@@ -55,14 +55,14 @@ if (isset($_POST['submit'])) {
                     <div class="col-lg-4 mx-auto">
                         <div class="auth-form-light text-left p-5">
                             <div class="brand-logo ">
-                                <img src="img/shlock.png">
+                                <img src="../img/inspire-logo.png">
                                 <!-- <h2> Shlock Empire </h2> -->
                             </div>
                             <h4>Hello! let's get started</h4>
                             <h6 class="font-weight-light">Sign in to continue.</h6>
                             <form class="pt-3" method="post">
                                 <div class="form-group">
-                                    <input type="floor_number" name="floor_number" class="form-control form-control-lg" id="exampleInputEmail1" placeholder=" Name ">
+                                    <input type="text" name="complex_name" class="form-control form-control-lg" id="exampleInputEmail1" placeholder=" Name ">
                                 </div>
                                 <div class="form-group">
                                     <input type="password" name="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">
@@ -78,7 +78,7 @@ if (isset($_POST['submit'])) {
                                         <label class="form-check-label text-muted">
                                             <input type="checkbox" class="form-check-input"> Keep me signed in </label>
                                     </div>
-                                    <a href="#" class="auth-link text-black">Forgot password?</a>
+                                    <!-- <a href="#" class="auth-link text-black">Forgot password?</a> -->
                                 </div>
 
                                 <div class="text-center mt-4 font-weight-light"> Don't have an account? <a href="ragister.php" class="text-primary">Ragister</a>

@@ -27,7 +27,7 @@
             <div class="col-lg-4 mx-auto">
               <div class="auth-form-light text-left p-5">
                 <div class="brand-logo">
-                <img src="img/shlock.png">
+                <img src="../img/inspire-logo.png">
                 </div>
                 <h4>New here?</h4>
                 <h6 class="font-weight-light">Signing up is easy. It only takes a few steps</h6>
@@ -36,48 +36,8 @@
                     <input type="text" class="form-control form-control-lg" id="exampleInputUsername1" name="username" placeholder="Username">
                   </div>
                   <div class="form-group">
-                    <select class="form-control form-control-lg" name="floor_number" id="exampleFormControlSelect2">
-                      <option>G-201</option>
-                      <option>G-202</option>
-                      <option>G-203</option>
-                      <option>G-204</option>
-                      <option>G-205</option>
-                      <option>G-206</option>
-                      <option>G-207</option>
-                      <option>G-208</option>
-                      <option>G-209</option>
-                      <option>G-210</option>
-                      <option>F-201</option>
-                      <option>F-202</option>
-                      <option>F-203</option>
-                      <option>F-204</option>
-                      <option>F-205</option>
-                      <option>F-206</option>
-                      <option>F-207</option>
-                      <option>F-208</option>
-                      <option>F-209</option>
-                      <option>F-210</option>  
-                      <option>S-201</option>
-                      <option>S-202</option>
-                      <option>S-203</option>
-                      <option>S-204</option>
-                      <option>S-205</option>
-                      <option>S-206</option>
-                      <option>S-207</option>
-                      <option>S-208</option>
-                      <option>S-209</option>
-                      <option>S-210</option>   
-                      <option>T-201</option>
-                      <option>T-202</option>
-                      <option>T-203</option>
-                      <option>T-204</option>
-                      <option>T-205</option>
-                      <option>T-206</option>
-                      <option>T-207</option>
-                      <option>T-208</option>
-                      <option>T-209</option>
-                      <option>T-210</option>        
-                    </select>
+                  <input type="text" class="form-control form-control-lg" id="exampleInputUsername1" name="complex_name" placeholder="complex name">
+                   
                   </div>
                   <div class="form-group">
                     <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" name="password" placeholder="Password">
@@ -122,18 +82,18 @@ include 'database/dbcon.php';
 
 if (isset($_POST['submit'])) {
     $username = mysqli_real_escape_string($con, $_POST['username']);
-    $floor_number = mysqli_real_escape_string($con, $_POST['floor_number']);
+    $complex_name = mysqli_real_escape_string($con, $_POST['complex_name']);
     $password = md5($_POST['password']);
 
     // Check
-    $check_sql = "SELECT * FROM admin WHERE floor_number = '$floor_number'";
+    $check_sql = "SELECT * FROM user_login WHERE complex_name = '$complex_name'";
     $result = $con->query($check_sql);
 
     if ($result->num_rows > 0) {
         echo "Error: Floor number already registered.";
     } else {
         // Insert data 
-        $insert_sql = "INSERT INTO admin (username, floor_number, password) VALUES ('$username', '$floor_number', '$password')";
+        $insert_sql = "INSERT INTO user_login (username, complex_name, password) VALUES ('$username', '$complex_name', '$password')";
 
         if ($con->query($insert_sql) === TRUE) {
             // header("Location: home.php");

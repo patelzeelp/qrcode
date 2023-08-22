@@ -49,7 +49,7 @@ if (isset($_GET['id'])) {
                 }
             }
 
-            header("Location: first.php");
+            header("Location: second.php");
             echo "Data updated  successfully!!";
 
             exit();
@@ -115,16 +115,16 @@ if (isset($_GET['id'])) {
                                         <div class="form-group">
                                             <label for="floor-number " class="col-form-label text-dark ">Floor Number:</label>
                                             <select class="form-control" id="floor-number" name="floor_number">
-                                                <option value="F-11" <?php if ($row['floor_number'] === 'F-11') echo 'selected'; ?>> F-11 </option>
-                                                <option value="F-12" <?php if ($row['floor_number'] === 'F-12') echo 'selected'; ?>>F-12</option>
-                                                <option value="F-13" <?php if ($row['floor_number'] === 'F-13') echo 'selected'; ?>>F-13</option>
-                                                <option value="F-14" <?php if ($row['floor_number'] === 'F-14') echo 'selected'; ?>>F-14</option>
-                                                <option value="F-15" <?php if ($row['floor_number'] === 'F-15') echo 'selected'; ?>>F-15</option>
-                                                <option value="F-16" <?php if ($row['floor_number'] === 'F-16') echo 'selected'; ?>>F-16</option>
-                                                <option value="F-17" <?php if ($row['floor_number'] === 'F-17') echo 'selected'; ?>>F-17</option>
-                                                <option value="F-18" <?php if ($row['floor_number'] === 'F-18') echo 'selected'; ?>>F-18</option>
-                                                <option value="F-19" <?php if ($row['floor_number'] === 'F-19') echo 'selected'; ?>>F-19</option>
-                                                <option value="F-20" <?php if ($row['floor_number'] === 'F-20') echo 'selected'; ?>>F-20</option>
+                                                <option value="S-21" <?php if ($row['floor_number'] === 'S-21') echo 'selected'; ?>> S-21 </option>
+                                                <option value="S-22" <?php if ($row['floor_number'] === 'S-22') echo 'selected'; ?>>S-22</option>
+                                                <option value="S-23" <?php if ($row['floor_number'] === 'S-23') echo 'selected'; ?>>S-23</option>
+                                                <option value="S-24" <?php if ($row['floor_number'] === 'S-24') echo 'selected'; ?>>S-24</option>
+                                                <option value="S-25" <?php if ($row['floor_number'] === 'S-25') echo 'selected'; ?>>S-25</option>
+                                                <option value="S-26" <?php if ($row['floor_number'] === 'S-26') echo 'selected'; ?>>S-26</option>
+                                                <option value="S-27" <?php if ($row['floor_number'] === 'S-27') echo 'selected'; ?>>S-27</option>
+                                                <option value="S-28" <?php if ($row['floor_number'] === 'S-28') echo 'selected'; ?>>S-28</option>
+                                                <option value="S-29" <?php if ($row['floor_number'] === 'S-29') echo 'selected'; ?>>S-29</option>
+                                                <option value="S-30" <?php if ($row['floor_number'] === 'S-30') echo 'selected'; ?>>S-30</option>
                                             </select>
                                         </div>
 
