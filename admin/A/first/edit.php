@@ -1,6 +1,23 @@
 <?php
 require_once '../../database/dbcon.php'; // Include your database connection
 
+
+session_start();
+
+if (!isset($_SESSION['complex_name'])) {
+    header("location:../../../login.php");
+  }
+if (isset($_SESSION['username'])) {
+    $username = $_SESSION['username'];
+} else {
+    // Redirect to the login page if the user is not authenticated
+    header("Location: login.php");
+    exit();
+}
+if (isset($_SESSION["id"])) {
+    $id = $_SESSION["id"];
+}
+
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $sql = mysqli_query($con, "SELECT * FROM a WHERE id='$id'");
@@ -95,7 +112,7 @@ if (isset($_GET['id'])) {
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
-                    <div class="page-header">
+                    <!-- <div class="page-header">
                         <h3 class="page-title"> Form elements </h3>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
@@ -103,7 +120,7 @@ if (isset($_GET['id'])) {
                                 <li class="breadcrumb-item active" aria-current="page">Form elements</li>
                             </ol>
                         </nav>
-                    </div>
+                    </div> -->
                     <div class="row">
                         <div class="col-12 grid-margin stretch-card">
                             <div class="card">

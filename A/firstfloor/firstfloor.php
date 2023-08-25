@@ -1,7 +1,21 @@
 <?php
 require_once '../../admin/database/dbcon.php';
+session_start();
 
+// define('APP_URL', 'https://qrcode/a/.com'); 
+
+
+// $link = APP_URL . '/page.php';
+// echo '<a href="' . $link . '">Go to Page</a>';
+
+
+if (isset($_SESSION["id"])) {
+    $id = $_SESSION["id"];
+  }
+ 
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,18 +33,22 @@ require_once '../../admin/database/dbcon.php';
     li {
         list-style-type: none;
     }
+    .page-title {
+            text-align: center;
+        }
+    
 </style>
 
 <body>
     <div class="container-scroller">
-
+ 
         <!-- partial -->
         <div class="container-fluid page-body-wrapper">
 
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="page-header ">
-                        <h2 class="page-title"> Shlock Impire </h2>
+                        <h2 class="page-title "> Shlock Impire </h2>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="../../A/index.php  ">Back</a></li>
@@ -38,7 +56,7 @@ require_once '../../admin/database/dbcon.php';
                             </ol>
                         </nav>
                     </div>
-                    <?php $sql = mysqli_query($con, "SELECT  *  FROM a where floor='first' ORDER BY floor_number ASC");
+                    <?php $sql = mysqli_query($con, "SELECT  *  FROM a where floor='first' and user_id='1'  ORDER BY floor_number ASC");
                     if (mysqli_num_rows($sql) > 0) :
                         foreach ($sql as $row) :  ?>
                             <div class="row">
@@ -52,6 +70,8 @@ require_once '../../admin/database/dbcon.php';
                                         </a>
 
                                     </div>
+
+                                                                                                                                                    
                                 </div>
                             </div>
                         <?php endforeach; ?>

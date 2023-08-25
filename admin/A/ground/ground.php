@@ -1,7 +1,23 @@
 <?php
 require_once '../../database/dbcon.php';
+session_start();
 
+if (isset($_SESSION['username'])) {
+    $username = $_SESSION['username'];
+} else {
+    // Redirect to the login page if the user is not authenticated
+    header("Location: login.php");
+    exit();
+}
 
+if (isset($_SESSION["id"])) {
+  $id = $_SESSION["id"];
+}
+$role1 ='';
+if ($_SESSION['role'] == 1 ) {
+  $role1  =" user_id='".$_SESSION['id']."'"; 
+  
+}
 
 
 
@@ -85,7 +101,7 @@ require_once '../../database/dbcon.php';
             </div>
           </div>
           <?php
-          $sql = mysqli_query($con, "SELECT  *  FROM a where floor='ground' ORDER BY floor_number ASC");
+          $sql = mysqli_query($con, "SELECT  *  FROM a where floor='ground'  and $role1 ORDER BY floor_number ASC");
           if (mysqli_num_rows($sql) > 0) :
 
             foreach ($sql as $row) :  ?>

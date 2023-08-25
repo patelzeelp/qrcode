@@ -12,7 +12,12 @@ if (isset($_POST['submit'])) {
 
     if ($result->num_rows == 1) {
         $user_data = $result->fetch_assoc();
-        $_SESSION['username'] = $user_data['username']; // Store username in session
+        $_SESSION['username'] = $user_data['username'];
+        $_SESSION['complex_name']= $user_data ['complex_name'];  // Store username in session
+        $_SESSION['role'] = $user_data['role'];
+        $_SESSION['id'] = $user_data['id'];
+
+
         header("Location: A/index.php");
         exit();
     } else {

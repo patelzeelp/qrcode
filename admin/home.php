@@ -73,9 +73,9 @@ if (isset($_SESSION['username'])) {
                   <div class="template-demo text-center">
                     <ul>
                       <li><a href="A/index.php"><button type="button" class="btn btn-primary btn-rounded btn-fw m-2 ">A</button></a></li>
-                      <li><a href="A/index.php"><button type="button" class="btn btn-secondary btn-rounded btn-fw m-2">B</button></a></li>
-                      <li><a href="A/index.php"><button type="button" class="btn btn-success btn-rounded btn-fw m-2">C</button></a></li>
-                      <li><a href="A/index.php"><button type="button" class="btn btn-danger btn-rounded btn-fw m-2">D</button></a></li>
+                      <li><a href="B/index.php"><button type="button" class="btn btn-secondary btn-rounded btn-fw m-2">B</button></a></li>
+                      <li><a href="C/index.php"><button type="button" class="btn btn-success btn-rounded btn-fw m-2">C</button></a></li>
+                      <li><a href="D/index.php"><button type="button" class="btn btn-danger btn-rounded btn-fw m-2">D</button></a></li>
                     </ul>
                   </div>
                 </div>

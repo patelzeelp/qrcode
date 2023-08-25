@@ -8,6 +8,8 @@ if (isset($_SESSION['username'])) {
   header("Location: login.php");
   exit();
 }
+
+
 ?>
 <!DOCTYPE html> 
 <html lang="en">
@@ -23,7 +25,7 @@ if (isset($_SESSION['username'])) {
 </head>
 <style>
   li{
-    list-style-type: none;
+    list-style-type: none;  
   }
 </style>
 
@@ -80,7 +82,7 @@ if (isset($_SESSION['username'])) {
             <div class="d-sm-flex justify-content-center justify-content-sm-between">
               <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Crate by inspire </span>
               <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://inspiresoftware.co.in/" target="_blank">Software & Mobile App
-Development Company</a> </span>
+               Development Company</a> </span>
             </div>
           </div>
         </footer>

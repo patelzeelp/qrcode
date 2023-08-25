@@ -1,30 +1,4 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shlock Empire </title>
-   <link rel="stylesheet" href="styles.css">
-</head>
-
-<body>
-    <header>
-        <h1 class="header">Qr Code </h1>
-    </header>
-
-    <div class="button-container">  
-        
-        <ul>
-            <li><a href="a/index.php" class="button button-1">A</a></li>
-            <li><a href="B/index.php" class="button button-2">B</a></li>
-            <li><a href="C/index.php" class="button button-3">C</a></li>
-            <li><a href="D/index.php" class="button button-4">D</a></li>
-        </ul>
-    </div>
-</body>
-
-</html> -->
 
 <!DOCTYPE html>
 <html lang="en">

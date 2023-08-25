@@ -1,12 +1,17 @@
 <?php
 session_start(); // Start the session
-
+if (!isset($_SESSION['complex_name'])) {
+    header("location:../../../login.php");
+  }
 if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
 } else {
     // Redirect to the login page if the user is not authenticated
     header("Location: login.php");
     exit();
+}
+if (isset($_SESSION["id"])) {
+    $id = $_SESSION["id"];
 }
 ?>
 <!DOCTYPE html>
@@ -44,7 +49,7 @@ if (isset($_SESSION['username'])) {
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
-                    <div class="page-header">
+                    <!-- <div class="page-header">
                         <h3 class="page-title"> Form elements </h3>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
@@ -52,7 +57,7 @@ if (isset($_SESSION['username'])) {
                                 <li class="breadcrumb-item active" aria-current="page">Form elements</li>
                             </ol>
                         </nav>
-                    </div>
+                    </div> -->
                     <div class="row">
                         <div class="col-12 grid-margin stretch-card">
                             <div class="card">
@@ -193,7 +198,9 @@ if (isset($_POST['submit'])) {
     $imfromactiones2 = mysqli_real_escape_string($con, $_POST['imfromactiones2']);
     $link = mysqli_real_escape_string($con, $_POST['link']);
     $email = mysqli_real_escape_string($con, $_POST['email']);
-
+    $user_id= $_SESSION['id'];
+    // print_r($user_id);
+    // exit();
 
     if (isset($_FILES['imageupload']) && $_FILES['imageupload']['error'] === UPLOAD_ERR_OK) {
         // Retrieve the uploaded imageupload file
@@ -212,8 +219,8 @@ if (isset($_POST['submit'])) {
         move_uploaded_file($image_tmp, "../../../img/" . $imageupload);
 
         // Insert the data into the database
-        $sql = "INSERT INTO a (`floor`,floor_number, name, mobile_no, title, imfromaction, title2, imfromaction2, link, email, shoplogo)
-                      VALUES ('ground','$floor_number', '$shopename', '$mobile_no', '$title', '$imfromactiones', '$title2', '$imfromactiones2', '$link', '$email','$imageupload')";
+        $sql = "INSERT INTO a (`floor`,floor_number, name, mobile_no, title, imfromaction, title2, imfromaction2, link, email, shoplogo,user_id)
+                      VALUES ('ground','$floor_number', '$shopename', '$mobile_no', '$title', '$imfromactiones', '$title2', '$imfromactiones2', '$link', '$email','$imageupload','$user_id')";
 
         if (mysqli_query($con, $sql)) {
             echo "Record inserted successfully.";

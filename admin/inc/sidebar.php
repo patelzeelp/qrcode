@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
   <ul class="nav">
     <li class="nav-item nav-category">Main</li>
@@ -77,10 +85,14 @@
 
     <li class="nav-item sidebar-user-actions">
       <div class="sidebar-user-menu">
-        <a href="../../logout.php" class="nav-link"><i class="mdi mdi-logout menu-icon"></i>
+        <a href="../logout.php" class="nav-link"><i class="mdi mdi-logout menu-icon"></i>
           <span class="menu-title">Log Out</span></a>
 
       </div>
     </li>
   </ul>
 </nav>
+</body>
+</html>
+
+
