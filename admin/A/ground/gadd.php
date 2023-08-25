@@ -2,7 +2,7 @@
 session_start(); // Start the session
 if (!isset($_SESSION['complex_name'])) {
     header("location:../../../login.php");
-  }
+}
 if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
 } else {
@@ -17,7 +17,7 @@ if (isset($_SESSION["id"])) {
 <!DOCTYPE html>
 <html lang="en">
 
-<head >
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -72,29 +72,29 @@ if (isset($_SESSION["id"])) {
                                                 // Connect to your database (replace these with your actual database credentials)
                                                 require_once '../../database/dbcon.php';
 
+                                                // Replace 'USER_ID' with the actual user's ID
+                                                $userID = $_SESSION["id"];
 
-                                                // Fetch existing floor numbers from the database
-                                                $existingFloorNumbers = array();
-                                                $query = "SELECT DISTINCT floor_number FROM a";
+                                                // Fetch existing floor numbers associated with the user from the database
+                                                $existingUserFloorNumbers = array();
+                                                $query = "SELECT DISTINCT floor_number FROM a WHERE user_id = '$userID'";
                                                 $result = mysqli_query($con, $query);
 
                                                 if ($result) {
                                                     while ($row = mysqli_fetch_assoc($result)) {
-                                                        $existingFloorNumbers[] = $row['floor_number'];
+                                                        $existingUserFloorNumbers[] = $row['floor_number'];
                                                     }
                                                 }
 
                                                 // Define the available floor options
-                                                $floorOptions = array("G-1", "G-2", "G-3", "G-4", "G-5", "G-6", "G-7", "G-8", "G-9", "G-10");
+                                                $floorOptions = array("G-1", "G-2", "G-3", "G-4", "G-5", "G-6", "G-7", "G-8", "G-9", "G-0");
 
-                                                // Loop throuFh the options and generate <option> elements
+                                                // Loop through the options and generate <option> elements
                                                 foreach ($floorOptions as $option) {
-                                                    if (!in_array($option, $existingFloorNumbers)) {
+                                                    if (!in_array($option, $existingUserFloorNumbers)) {
                                                         echo "<option value='$option'>$option</option>";
                                                     }
                                                 }
-
-
                                                 ?>
                                             </select>
                                         </div>
@@ -198,7 +198,7 @@ if (isset($_POST['submit'])) {
     $imfromactiones2 = mysqli_real_escape_string($con, $_POST['imfromactiones2']);
     $link = mysqli_real_escape_string($con, $_POST['link']);
     $email = mysqli_real_escape_string($con, $_POST['email']);
-    $user_id= $_SESSION['id'];
+    $user_id = $_SESSION['id'];
     // print_r($user_id);
     // exit();
 
@@ -208,12 +208,12 @@ if (isset($_POST['submit'])) {
         $image_tmp = $_FILES['imageupload']['tmp_name'];
 
         // Check if the file is an image (JPG, PNG, etc.)
-        $filepath = ['jpg', 'jpeg', 'png','svg', 'ico'];
+        $filepath = ['jpg', 'jpeg', 'png', 'svg', 'ico'];
         $fileExtension = strtolower(pathinfo($imageupload, PATHINFO_EXTENSION));
         if (!in_array($fileExtension, $filepath)) {
             echo "Invalid image file. Only JPG, JPEG, and PNG files are allowed.";
             exit();
-        }   
+        }
 
         // Move the uploaded image to a directory on the server
         move_uploaded_file($image_tmp, "../../../img/" . $imageupload);

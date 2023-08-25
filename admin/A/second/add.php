@@ -65,36 +65,36 @@ if (isset($_SESSION["id"])) {
                                     <h4 class="card-title">Basic form elements</h4>
                                     <p class="card-description"> Basic form elements </p>
                                     <form class="forms-sample" method="post" action="" enctype="multipart/form-data">
-                                        <div class="form-group">
+                                    <div class="form-group">
                                             <label for="floor-number" class="col-form-label text-dark">Floor Number:</label>
                                             <select class="form-control" id="floor-number" name="floor_number">
                                                 <?php
                                                 // Connect to your database (replace these with your actual database credentials)
                                                 require_once '../../database/dbcon.php';
 
+                                                // Replace 'USER_ID' with the actual user's ID
+                                                $userID = $_SESSION["id"];
 
-                                                // Fetch existing floor numbers from the database
-                                                $existingFloorNumbers = array();
-                                                $query = "SELECT DISTINCT floor_number FROM a";
+                                                // Fetch existing floor numbers associated with the user from the database
+                                                $existingUserFloorNumbers = array();
+                                                $query = "SELECT DISTINCT floor_number FROM a WHERE user_id = '$userID'";
                                                 $result = mysqli_query($con, $query);
 
                                                 if ($result) {
                                                     while ($row = mysqli_fetch_assoc($result)) {
-                                                        $existingFloorNumbers[] = $row['floor_number'];
+                                                        $existingUserFloorNumbers[] = $row['floor_number'];
                                                     }
                                                 }
 
                                                 // Define the available floor options
-                                                $floorOptions = array("S-21", "S-22", "S-23", "S-24", "S-25", "S-26", "S-27", "S-28", "S-29", "S-20");
+                                                $floorOptions = array("S-21", "S-22", "S-23", "S-24", "S-25", "S-26", "S-27", "S-28", "S-29", "F-30");
 
-                                                // Loop throuFh the options and generate <option> elements
+                                                // Loop through the options and generate <option> elements
                                                 foreach ($floorOptions as $option) {
-                                                    if (!in_array($option, $existingFloorNumbers)) {
+                                                    if (!in_array($option, $existingUserFloorNumbers)) {
                                                         echo "<option value='$option'>$option</option>";
                                                     }
                                                 }
-
-
                                                 ?>
                                             </select>
                                         </div>

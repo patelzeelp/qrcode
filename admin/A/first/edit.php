@@ -11,7 +11,7 @@ if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
 } else {
     // Redirect to the login page if the user is not authenticated
-    header("Location: login.php");
+    header("Location: ../../login.php");
     exit();
 }
 if (isset($_SESSION["id"])) {

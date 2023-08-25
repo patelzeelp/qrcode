@@ -2,7 +2,7 @@
 session_start(); // Start the session
 if (!isset($_SESSION['complex_name'])) {
     header("location:../../../login.php");
-  }
+}
 if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
 } else {
@@ -72,32 +72,33 @@ if (isset($_SESSION["id"])) {
                                                 // Connect to your database (replace these with your actual database credentials)
                                                 require_once '../../database/dbcon.php';
 
+                                                // Replace 'USER_ID' with the actual user's ID
+                                                $userID = $_SESSION["id"];
 
-                                                // Fetch existing floor numbers from the database
-                                                $existingFloorNumbers = array();
-                                                $query = "SELECT DISTINCT floor_number FROM a";
+                                                // Fetch existing floor numbers associated with the user from the database
+                                                $existingUserFloorNumbers = array();
+                                                $query = "SELECT DISTINCT floor_number FROM a WHERE user_id = '$userID'";
                                                 $result = mysqli_query($con, $query);
 
                                                 if ($result) {
                                                     while ($row = mysqli_fetch_assoc($result)) {
-                                                        $existingFloorNumbers[] = $row['floor_number'];
+                                                        $existingUserFloorNumbers[] = $row['floor_number'];
                                                     }
                                                 }
 
                                                 // Define the available floor options
                                                 $floorOptions = array("F-11", "F-12", "F-13", "F-14", "F-15", "F-16", "F-17", "F-18", "F-19", "F-20");
 
-                                                // Loop throuFh the options and generate <option> elements
+                                                // Loop through the options and generate <option> elements
                                                 foreach ($floorOptions as $option) {
-                                                    if (!in_array($option, $existingFloorNumbers)) {
+                                                    if (!in_array($option, $existingUserFloorNumbers)) {
                                                         echo "<option value='$option'>$option</option>";
                                                     }
                                                 }
-
-
                                                 ?>
                                             </select>
                                         </div>
+
                                         <div class="form-group">
                                             <label for="exampleInputEmail3">Shope Name:</label>
                                             <input type="text" name="shopename" class="form-control" id="exampleInputEmail3" placeholder="Shope Name">
@@ -198,7 +199,7 @@ if (isset($_POST['submit'])) {
     $imfromactiones2 = mysqli_real_escape_string($con, $_POST['imfromactiones2']);
     $link = mysqli_real_escape_string($con, $_POST['link']);
     $email = mysqli_real_escape_string($con, $_POST['email']);
-    $user_id= $_SESSION['id'];
+    $user_id = $_SESSION['id'];
     // print_r($user_id);
     // exit();
 
